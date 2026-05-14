@@ -17,272 +17,104 @@
   --shadow:0 4px 24px rgba(0,105,92,.10);
 }
 body{font-family:'Inter',sans-serif;background:var(--surface);color:var(--text);min-height:100vh}
-
-/* ── NAV ── */
-.topnav{
-  background:var(--teal-dark);padding:0 20px;height:56px;
-  display:flex;align-items:center;justify-content:space-between;
-  position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.25);
-}
+ 
+/* NAV */
+.topnav{background:var(--teal-dark);padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.25)}
 .nav-brand{display:flex;align-items:center;gap:10px}
 .nav-logo{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-size:16px}
 .nav-title{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:#fff;letter-spacing:.3px}
-.admin-access-btn{
-  padding:7px 16px;border-radius:8px;border:1px solid rgba(201,168,76,.5);
-  background:rgba(201,168,76,.15);color:var(--gold-light);
-  font-size:12px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;
-  transition:all .2s;display:flex;align-items:center;gap:6px;
-}
-.admin-access-btn:hover{background:rgba(201,168,76,.25)}
-
-/* ── PAGES ── */
+.staff-btn{padding:7px 16px;border-radius:8px;border:1px solid rgba(201,168,76,.5);background:rgba(201,168,76,.15);color:var(--gold-light);font-size:12px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;display:flex;align-items:center;gap:6px}
+.staff-btn:hover{background:rgba(201,168,76,.25)}
+ 
+/* PAGES */
 .page{display:none}.page.active{display:block}
-
-/* ══════════════ GUEST PAGE ══════════════ */
-.hero{
-  background:linear-gradient(135deg,var(--teal-dark) 0%,var(--teal) 60%,var(--teal-light) 100%);
-  padding:44px 20px 36px;text-align:center;position:relative;overflow:hidden;
-}
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background-image:radial-gradient(circle at 20% 50%,rgba(255,255,255,.04) 0%,transparent 50%),
-    radial-gradient(circle at 80% 20%,rgba(201,168,76,.08) 0%,transparent 50%);
-}
+ 
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--teal-dark) 0%,var(--teal) 60%,var(--teal-light) 100%);padding:44px 20px 36px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(255,255,255,.04) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(201,168,76,.08) 0%,transparent 50%)}
 .hero-inner{position:relative;z-index:1}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(201,168,76,.18);border:1px solid rgba(201,168,76,.4);
-  border-radius:30px;padding:5px 18px;
-  font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;
-  color:var(--gold-light);margin-bottom:16px;
-}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.18);border:1px solid rgba(201,168,76,.4);border-radius:30px;padding:5px 18px;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:16px}
 .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,6vw,44px);font-weight:600;color:#fff;line-height:1.15;margin-bottom:6px}
 .hero h1 em{font-style:italic;color:var(--gold-light)}
 .hero-sub{font-size:14px;color:rgba(255,255,255,.65);letter-spacing:.5px}
-
+ 
+/* GUEST MAIN */
 .guest-main{max-width:580px;margin:0 auto;padding:28px 16px 80px}
-
-.search-card{
-  background:#fff;border:1px solid var(--border);
-  border-radius:18px;padding:24px;margin-bottom:20px;
-  box-shadow:var(--shadow);
-}
+.search-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:24px;margin-bottom:20px;box-shadow:var(--shadow)}
 .search-lbl{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:14px;display:flex;align-items:center;gap:8px}
 .search-lbl::after{content:'';flex:1;height:1px;background:var(--border)}
 .search-wrap{position:relative}
 .s-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:15px;color:var(--text-light);pointer-events:none}
-.s-input{
-  width:100%;padding:14px 42px 14px 44px;
-  border:1.5px solid var(--border);border-radius:12px;
-  font-size:15px;font-family:'Inter',sans-serif;color:var(--text);
-  outline:none;background:var(--surface);transition:all .25s;
-}
+.s-input{width:100%;padding:14px 42px 14px 44px;border:1.5px solid var(--border);border-radius:12px;font-size:15px;font-family:'Inter',sans-serif;color:var(--text);outline:none;background:var(--surface);transition:all .25s}
 .s-input:focus{border-color:var(--teal);background:#fff;box-shadow:0 0 0 3px rgba(0,105,92,.1)}
 .s-input::placeholder{color:var(--text-light)}
-.s-clear{
-  position:absolute;right:12px;top:50%;transform:translateY(-50%);
-  background:var(--border);border:none;width:24px;height:24px;
-  border-radius:50%;font-size:11px;cursor:pointer;color:var(--text-mid);
-  display:none;align-items:center;justify-content:center;transition:all .2s;
-}
+.s-clear{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:var(--border);border:none;width:24px;height:24px;border-radius:50%;font-size:11px;cursor:pointer;color:var(--text-mid);display:none;align-items:center;justify-content:center;transition:all .2s}
 .s-clear:hover{background:var(--teal);color:#fff}
 .s-clear.show{display:flex}
 .search-hint{font-size:12px;color:var(--text-light);margin-top:10px;display:flex;align-items:center;gap:6px}
-
+ 
 .prompt{background:#fff;border:1px solid var(--border);border-radius:18px;padding:56px 28px;text-align:center;box-shadow:var(--shadow)}
 .prompt-icon{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-light));display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px}
 .prompt-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--text);margin-bottom:8px}
 .prompt-sub{font-size:13px;color:var(--text-light);line-height:1.7}
-
+ 
 .results-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding:0 2px}
 .results-ct{font-size:12px;font-weight:500;color:var(--text-mid)}
 .results-ct strong{color:var(--teal)}
-
-.rcard{
-  background:#fff;border:1.5px solid var(--border);
-  border-radius:14px;padding:15px 17px;margin-bottom:10px;
-  display:flex;align-items:center;gap:13px;
-  cursor:pointer;transition:all .25s;box-shadow:0 2px 8px rgba(0,0,0,.04);
-}
-.rcard:hover{border-color:var(--teal);box-shadow:var(--shadow);transform:translateY(-1px)}
-.rcard.is-in{border-color:rgba(46,125,82,.4);background:var(--success-bg)}
-.av{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:#fff;flex-shrink:0}
-.rbody{flex:1;min-width:0}
-.rname{font-size:14.5px;font-weight:600;color:var(--text);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.rspouse{font-size:12px;color:var(--text-light);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.rright{text-align:right;flex-shrink:0}
-.tpill{display:inline-block;padding:4px 11px;border-radius:20px;font-size:11px;font-weight:600;color:#fff;margin-bottom:3px}
-.tname-sm{font-size:10px;color:var(--text-light)}
-.srow{display:flex;align-items:center;gap:5px;justify-content:flex-end;margin-top:4px}
+ 
+/* RESULT CARD — group card showing both people */
+.group-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.04);transition:all .25s}
+.group-card:hover{border-color:var(--teal);box-shadow:var(--shadow)}
+.group-card-header{padding:10px 16px 8px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.group-table-pill{display:inline-flex;align-items:center;gap:6px}
+.tpill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;color:#fff}
+.tname-sm{font-size:11px;color:var(--text-light)}
+.group-type{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:2px 8px;border-radius:10px}
+.type-couple{background:#e8f0fe;color:#1a73e8}
+.type-single{background:#fce8e6;color:#c5221f}
+.type-solo{background:#fef3e2;color:#e37400}
+ 
+/* Person row inside group card */
+.person-row{display:flex;align-items:center;gap:12px;padding:12px 16px;cursor:pointer;transition:background .15s;border-bottom:1px solid var(--border)}
+.person-row:last-child{border-bottom:none}
+.person-row:hover{background:var(--surface)}
+.person-row.is-in{background:var(--success-bg)}
+.av{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;color:#fff;flex-shrink:0}
+.pinfo{flex:1;min-width:0}
+.pname{font-size:13.5px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prole{font-size:11px;color:var(--text-light);margin-top:1px}
+.pstatus{display:flex;align-items:center;gap:5px;flex-shrink:0}
 .sdot{width:7px;height:7px;border-radius:50%}
 .sdot.g{background:#2e7d52}.sdot.gr{background:#c8d8d4}
 .sin{font-size:11px;font-weight:500;color:var(--success)}
 .sout{font-size:11px;color:var(--text-light)}
-
+ 
+/* no-spouse row */
+.no-spouse-row{padding:10px 16px;display:flex;align-items:center;gap:8px;background:#fafafa}
+.no-spouse-icon{font-size:14px;color:var(--text-light)}
+.no-spouse-text{font-size:11.5px;color:var(--text-light);font-style:italic}
+ 
 .empty{text-align:center;padding:40px 20px;color:var(--text-light)}
 .empty .ei{font-size:44px;margin-bottom:12px}
 .empty p{font-size:13px;line-height:1.7}
-
-/* ══════════════ PASSWORD MODAL ══════════════ */
-.pw-overlay{
-  position:fixed;inset:0;background:rgba(0,40,30,.7);
-  z-index:300;display:none;align-items:center;justify-content:center;
-  padding:20px;backdrop-filter:blur(6px);
-}
+ 
+/* PASSWORD MODAL */
+.pw-overlay{position:fixed;inset:0;background:rgba(0,40,30,.7);z-index:300;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(6px)}
 .pw-overlay.open{display:flex}
-.pw-box{
-  background:#fff;border-radius:20px;padding:36px 32px;
-  max-width:380px;width:100%;text-align:center;
-  box-shadow:0 30px 80px rgba(0,0,0,.3);
-  animation:popIn .3s cubic-bezier(.34,1.56,.64,1);
-}
+.pw-box{background:#fff;border-radius:20px;padding:36px 32px;max-width:380px;width:100%;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.3);animation:popIn .3s cubic-bezier(.34,1.56,.64,1)}
 @keyframes popIn{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
 .pw-icon{font-size:42px;margin-bottom:12px}
 .pw-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--text);margin-bottom:4px}
 .pw-sub{font-size:12px;color:var(--text-light);margin-bottom:20px}
-.pw-input{
-  width:100%;padding:13px 16px;border:1.5px solid var(--border);
-  border-radius:10px;font-size:16px;font-family:'Inter',sans-serif;
-  text-align:center;letter-spacing:4px;color:var(--text);
-  outline:none;margin-bottom:8px;transition:all .2s;
-}
+.pw-input{width:100%;padding:13px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:'Inter',sans-serif;text-align:center;letter-spacing:4px;color:var(--text);outline:none;margin-bottom:8px;transition:all .2s}
 .pw-input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(0,105,92,.1)}
 .pw-error{font-size:12px;color:var(--danger);margin-bottom:14px;min-height:18px}
 .pw-btns{display:flex;flex-direction:column;gap:10px}
-.pw-btn-main{
-  padding:14px;border-radius:12px;border:none;
-  background:linear-gradient(135deg,var(--teal),var(--teal-light));
-  color:#fff;font-size:14px;font-weight:600;
-  font-family:'Inter',sans-serif;cursor:pointer;transition:all .25s;
-}
+.pw-btn-main{padding:14px;border-radius:12px;border:none;background:linear-gradient(135deg,var(--teal),var(--teal-light));color:#fff;font-size:14px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:all .25s}
 .pw-btn-main:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,105,92,.3)}
-.pw-btn-cancel{
-  padding:12px;border-radius:12px;border:1.5px solid var(--border);
-  background:var(--surface);color:var(--text-mid);
-  font-size:13px;font-weight:500;font-family:'Inter',sans-serif;cursor:pointer;
-}
-
-/* ══════════════ ADMIN PAGE ══════════════ */
-.admin-header{
-  background:linear-gradient(135deg,var(--teal-dark),var(--teal));
-  padding:28px 20px 24px;
-}
-.admin-header-inner{max-width:1060px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.ah-left{}
-.ah-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#fff;margin-bottom:3px}
-.ah-sub{font-size:12px;color:rgba(255,255,255,.55)}
-.ah-right{display:flex;gap:10px;align-items:center}
-.logout-btn{
-  padding:8px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.2);
-  background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);
-  font-size:12px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;
-}
-.logout-btn:hover{background:rgba(255,255,255,.2);color:#fff}
-
-.admin-body{max-width:1060px;margin:0 auto;padding:20px 16px 80px}
-
-/* Big stats */
-.big-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
-@media(max-width:640px){.big-stats{grid-template-columns:1fr 1fr}}
-.bs{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 16px;box-shadow:var(--shadow);position:relative;overflow:hidden}
-.bs::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
-.bs-t::before{background:linear-gradient(90deg,var(--teal),var(--teal-light))}
-.bs-g::before{background:linear-gradient(90deg,#2e7d52,#43a047)}
-.bs-a::before{background:linear-gradient(90deg,#e65100,#ef6c00)}
-.bs-gold::before{background:linear-gradient(90deg,var(--gold),var(--gold-light))}
-.bs-num{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;line-height:1;margin-bottom:4px}
-.bs-t .bs-num{color:var(--teal)}.bs-g .bs-num{color:var(--success)}.bs-a .bs-num{color:#e65100}.bs-gold .bs-num{color:var(--gold)}
-.bs-lbl{font-size:11px;font-weight:500;color:var(--text-mid)}
-.bs-sub{font-size:10px;color:var(--text-light);margin-top:2px}
-
-/* Progress */
-.prog-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);margin-bottom:16px}
-.prog-hdr{display:flex;justify-content:space-between;margin-bottom:8px}
-.prog-lbl{font-size:13px;font-weight:600;color:var(--text)}
-.prog-pct{font-size:13px;font-weight:700;color:var(--teal)}
-.prog-track{height:10px;background:var(--border);border-radius:5px;overflow:hidden}
-.prog-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--teal-light));border-radius:5px;transition:width .6s ease}
-
-/* Action bar */
-.abar{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;align-items:center}
-.abtn{padding:9px 18px;border-radius:10px;border:none;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px}
-.abtn-teal{background:var(--teal);color:#fff;box-shadow:0 2px 8px rgba(0,105,92,.3)}
-.abtn-teal:hover{background:var(--teal-dark)}
-.abtn-gold{background:var(--gold);color:var(--teal-dark)}
-.abtn-gold:hover{background:var(--gold-light)}
-.abtn-red{background:var(--danger-bg);color:var(--danger);border:1px solid rgba(198,40,40,.2)}
-.abtn-red:hover{background:#ffcdd2}
-.abar-note{font-size:11px;color:var(--text-light);margin-left:auto}
-
-/* Admin grid */
-.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:680px){.admin-grid{grid-template-columns:1fr}}
-.sc{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
-.sc.full{grid-column:1/-1}
-.sc-hdr{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.sc-title{font-size:13px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:6px}
-.sc-badge{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;background:var(--surface);border:1px solid var(--border);color:var(--text-light)}
-.sc-search{padding:10px 14px;border-bottom:1px solid var(--border)}
-.sc-search input{width:100%;padding:8px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:12px;font-family:'Inter',sans-serif;color:var(--text);outline:none;background:var(--surface);transition:all .2s}
-.sc-search input:focus{border-color:var(--teal);background:#fff}
-.sc-search input::placeholder{color:var(--text-light)}
-.sc-tabs{display:flex;border-bottom:1px solid var(--border)}
-.sc-tab{flex:1;padding:10px;text-align:center;font-size:11px;font-weight:600;letter-spacing:.5px;color:var(--text-light);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s}
-.sc-tab.active{color:var(--teal);border-bottom-color:var(--teal)}
-
-.glist{max-height:360px;overflow-y:auto}
-.glist::-webkit-scrollbar{width:3px}
-.glist::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-
-.grow{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border);transition:background .15s}
-.grow:last-child{border-bottom:none}
-.grow:hover{background:var(--surface)}
-.gav{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0;font-family:'Cormorant Garamond',serif}
-.ginfo{flex:1;min-width:0}
-.gname{font-size:12.5px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.gtable{font-size:10px;color:var(--text-light)}
-.gbadge{flex-shrink:0;padding:2px 9px;border-radius:20px;font-size:10px;font-weight:600}
-.bin{background:var(--success-bg);color:var(--success)}
-.bout{background:var(--danger-bg);color:var(--danger)}
-.gcheckin-btn{flex-shrink:0;padding:4px 10px;border-radius:6px;border:none;font-size:11px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
-.gcheckin-btn.check-in{background:var(--success-bg);color:var(--success);border:1px solid rgba(46,125,82,.2)}
-.gcheckin-btn.check-in:hover{background:var(--success);color:#fff}
-.gcheckin-btn.undo{background:var(--danger-bg);color:var(--danger);border:1px solid rgba(198,40,40,.2)}
-.gcheckin-btn.undo:hover{background:var(--danger);color:#fff}
-
-/* Table breakdown */
-.trow{padding:10px 18px;border-bottom:1px solid var(--border)}
-.trow:last-child{border-bottom:none}
-.trow-top{display:flex;justify-content:space-between;margin-bottom:5px}
-.trow-name{font-size:12px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:7px}
-.tdot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
-.trow-count{font-size:11px;font-weight:700}
-.trow-guests{font-size:10px;color:var(--text-light);margin-bottom:5px}
-.trow-bar{height:5px;background:var(--border);border-radius:3px;overflow:hidden}
-.trow-fill{height:100%;border-radius:3px;transition:width .5s ease}
-
-/* Add guest form */
-.add-guest-form{padding:16px 18px;border-top:1px solid var(--border);background:var(--surface)}
-.ag-title{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
-.ag-row{display:flex;gap:8px;flex-wrap:wrap}
-.ag-input{flex:1;min-width:120px;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:12px;font-family:'Inter',sans-serif;color:var(--text);outline:none;background:#fff;transition:all .2s}
-.ag-input:focus{border-color:var(--teal)}
-.ag-input::placeholder{color:var(--text-light)}
-.ag-select{flex:1;min-width:120px;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:12px;font-family:'Inter',sans-serif;color:var(--text);outline:none;background:#fff;cursor:pointer}
-.ag-select:focus{border-color:var(--teal)}
-.ag-btn{padding:9px 18px;border-radius:8px;border:none;background:var(--teal);color:#fff;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:all .2s;white-space:nowrap}
-.ag-btn:hover{background:var(--teal-dark)}
-
-/* Remove guest */
-.remove-btn{
-  flex-shrink:0;width:26px;height:26px;border-radius:50%;
-  border:none;background:transparent;color:var(--text-light);
-  font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;
-  transition:all .2s;
-}
-.remove-btn:hover{background:var(--danger-bg);color:var(--danger)}
-
-/* ── MODAL (guest checkin) ── */
+.pw-btn-cancel{padding:12px;border-radius:12px;border:1.5px solid var(--border);background:var(--surface);color:var(--text-mid);font-size:13px;font-weight:500;font-family:'Inter',sans-serif;cursor:pointer}
+ 
+/* CHECKIN MODAL */
 .overlay{position:fixed;inset:0;background:rgba(0,40,30,.6);z-index:200;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(4px)}
 .overlay.open{display:flex}
 .modal{background:#fff;width:100%;max-width:480px;border-radius:24px 24px 0 0;animation:slideUp .35s cubic-bezier(.34,1.56,.64,1);box-shadow:0 -20px 60px rgba(0,0,0,.2);overflow:hidden}
@@ -292,7 +124,7 @@ body{font-family:'Inter',sans-serif;background:var(--surface);color:var(--text);
 .modal-body{padding:22px 24px 28px;text-align:center}
 .mav{width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#fff;margin:0 auto 12px}
 .mname{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--text);margin-bottom:3px}
-.mspouse{font-size:12px;color:var(--text-light);margin-bottom:16px}
+.mrole{font-size:12px;color:var(--text-light);margin-bottom:16px}
 .mtbl-block{display:inline-flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px 20px;margin-bottom:16px}
 .mtnum{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:600;color:var(--teal)}
 .mtlbl{font-size:10px;color:var(--text-light);letter-spacing:1px;text-transform:uppercase}
@@ -307,36 +139,127 @@ body{font-family:'Inter',sans-serif;background:var(--surface);color:var(--text);
 .mbtn-warn{background:linear-gradient(135deg,#e65100,#ef6c00);color:#fff}
 .mbtn-ghost{background:var(--surface);color:var(--text-mid);border:1.5px solid var(--border)}
 .mbtn-ghost:hover{border-color:var(--teal);color:var(--teal)}
-
+ 
+/* ADMIN PAGE */
+.admin-header{background:linear-gradient(135deg,var(--teal-dark),var(--teal));padding:28px 20px 24px}
+.admin-header-inner{max-width:1060px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.ah-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#fff;margin-bottom:3px}
+.ah-sub{font-size:12px;color:rgba(255,255,255,.55)}
+.logout-btn{padding:8px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);font-size:12px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
+.logout-btn:hover{background:rgba(255,255,255,.2);color:#fff}
+.admin-body{max-width:1060px;margin:0 auto;padding:20px 16px 80px}
+ 
+/* Big stats */
+.big-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+@media(max-width:640px){.big-stats{grid-template-columns:1fr 1fr}}
+.bs{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 16px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.bs::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.bs-t::before{background:linear-gradient(90deg,var(--teal),var(--teal-light))}
+.bs-g::before{background:linear-gradient(90deg,#2e7d52,#43a047)}
+.bs-a::before{background:linear-gradient(90deg,#e65100,#ef6c00)}
+.bs-gold::before{background:linear-gradient(90deg,var(--gold),var(--gold-light))}
+.bs-num{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;line-height:1;margin-bottom:4px}
+.bs-t .bs-num{color:var(--teal)}.bs-g .bs-num{color:var(--success)}.bs-a .bs-num{color:#e65100}.bs-gold .bs-num{color:var(--gold)}
+.bs-lbl{font-size:11px;font-weight:500;color:var(--text-mid)}
+.bs-sub{font-size:10px;color:var(--text-light);margin-top:2px}
+ 
+.prog-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);margin-bottom:16px}
+.prog-hdr{display:flex;justify-content:space-between;margin-bottom:8px}
+.prog-lbl{font-size:13px;font-weight:600;color:var(--text)}
+.prog-pct{font-size:13px;font-weight:700;color:var(--teal)}
+.prog-track{height:10px;background:var(--border);border-radius:5px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--teal-light));border-radius:5px;transition:width .6s ease}
+ 
+.abar{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;align-items:center}
+.abtn{padding:9px 18px;border-radius:10px;border:none;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px}
+.abtn-teal{background:var(--teal);color:#fff;box-shadow:0 2px 8px rgba(0,105,92,.3)}
+.abtn-teal:hover{background:var(--teal-dark)}
+.abar-note{font-size:11px;color:var(--text-light);margin-left:auto}
+ 
+.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:680px){.admin-grid{grid-template-columns:1fr}}
+.sc{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.sc.full{grid-column:1/-1}
+.sc-hdr{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.sc-title{font-size:13px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:6px}
+.sc-badge{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;background:var(--surface);border:1px solid var(--border);color:var(--text-light)}
+.sc-search{padding:10px 14px;border-bottom:1px solid var(--border)}
+.sc-search input{width:100%;padding:8px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:12px;font-family:'Inter',sans-serif;color:var(--text);outline:none;background:var(--surface);transition:all .2s}
+.sc-search input:focus{border-color:var(--teal);background:#fff}
+.sc-search input::placeholder{color:var(--text-light)}
+.sc-tabs{display:flex;border-bottom:1px solid var(--border)}
+.sc-tab{flex:1;padding:10px;text-align:center;font-size:11px;font-weight:600;letter-spacing:.5px;color:var(--text-light);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s}
+.sc-tab.active{color:var(--teal);border-bottom-color:var(--teal)}
+ 
+.glist{max-height:400px;overflow-y:auto}
+.glist::-webkit-scrollbar{width:3px}
+.glist::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+ 
+/* Admin guest row */
+.ag-row{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border);transition:background .15s}
+.ag-row:last-child{border-bottom:none}
+.ag-row:hover{background:var(--surface)}
+.ag-av{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0;font-family:'Cormorant Garamond',serif}
+.ag-info{flex:1;min-width:0}
+.ag-name{font-size:12.5px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ag-meta{font-size:10px;color:var(--text-light)}
+.ag-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.ag-toggle{padding:3px 10px;border-radius:6px;border:none;font-size:10.5px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
+.ag-toggle.check{background:var(--success-bg);color:var(--success);border:1px solid rgba(46,125,82,.2)}
+.ag-toggle.check:hover{background:var(--success);color:#fff}
+.ag-toggle.undo{background:var(--danger-bg);color:var(--danger);border:1px solid rgba(198,40,40,.2)}
+.ag-toggle.undo:hover{background:var(--danger);color:#fff}
+.ag-badge{padding:2px 8px;border-radius:20px;font-size:10px;font-weight:600}
+.bin{background:var(--success-bg);color:var(--success)}
+.bout{background:var(--danger-bg);color:var(--danger)}
+.remove-btn{width:24px;height:24px;border-radius:50%;border:none;background:transparent;color:var(--text-light);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.remove-btn:hover{background:var(--danger-bg);color:var(--danger)}
+ 
+/* Table breakdown */
+.trow{padding:10px 18px;border-bottom:1px solid var(--border)}
+.trow:last-child{border-bottom:none}
+.trow-top{display:flex;justify-content:space-between;margin-bottom:5px}
+.trow-name{font-size:12px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:7px}
+.tdot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+.trow-count{font-size:11px;font-weight:700}
+.trow-bar{height:5px;background:var(--border);border-radius:3px;overflow:hidden}
+.trow-fill{height:100%;border-radius:3px;transition:width .5s ease}
+ 
+/* Add guest */
+.add-form{padding:16px 18px;border-top:1px solid var(--border);background:var(--surface)}
+.af-title{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+.af-row{display:flex;gap:8px;flex-wrap:wrap}
+.af-input{flex:1;min-width:120px;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:12px;font-family:'Inter',sans-serif;color:var(--text);outline:none;background:#fff;transition:all .2s}
+.af-input:focus{border-color:var(--teal)}
+.af-input::placeholder{color:var(--text-light)}
+.af-select{flex:1;min-width:120px;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:12px;font-family:'Inter',sans-serif;color:var(--text);outline:none;background:#fff;cursor:pointer}
+.af-select:focus{border-color:var(--teal)}
+.af-btn{padding:9px 18px;border-radius:8px;border:none;background:var(--teal);color:#fff;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:all .2s;white-space:nowrap}
+.af-btn:hover{background:var(--teal-dark)}
+ 
 /* TOAST */
-.toast{
-  position:fixed;bottom:24px;left:50%;
-  transform:translateX(-50%) translateY(80px);
-  background:var(--teal-dark);color:#fff;
-  padding:12px 24px;border-radius:30px;font-size:13px;font-weight:500;
-  z-index:999;transition:transform .4s cubic-bezier(.34,1.56,.64,1);
-  box-shadow:0 8px 32px rgba(0,0,0,.25);white-space:nowrap;
-}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--teal-dark);color:#fff;padding:12px 24px;border-radius:30px;font-size:13px;font-weight:500;z-index:999;transition:transform .4s cubic-bezier(.34,1.56,.64,1);box-shadow:0 8px 32px rgba(0,0,0,.25);white-space:nowrap}
 .toast.show{transform:translateX(-50%) translateY(0)}
 .toast.ok{background:var(--success)}
 .toast.undo{background:#bf360c}
 .toast.err{background:var(--danger)}
+ 
+/* group divider in admin */
+.group-divider{padding:6px 16px 3px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;border-bottom:1px solid var(--border)}
 </style>
 </head>
 <body>
-
-<!-- ── NAV ── -->
+ 
+<!-- NAV -->
 <nav class="topnav">
   <div class="nav-brand">
     <div class="nav-logo">✦</div>
     <span class="nav-title">Covenant Love Experience</span>
   </div>
-  <button class="admin-access-btn" onclick="openPwModal()">🔐 Staff Login</button>
+  <button class="staff-btn" onclick="openPw()">🔐 Staff Login</button>
 </nav>
-
-<!-- ══════════════════════════════════════
-     GUEST PAGE
-══════════════════════════════════════ -->
+ 
+<!-- ═══════════ GUEST PAGE ═══════════ -->
 <div class="page active" id="page-guest">
   <div class="hero">
     <div class="hero-inner">
@@ -345,7 +268,6 @@ body{font-family:'Inter',sans-serif;background:var(--surface);color:var(--text);
       <div class="hero-sub" style="margin-top:8px">Type your name below to find your table and check in</div>
     </div>
   </div>
-
   <div class="guest-main">
     <div class="search-card">
       <div class="search-lbl">Find Your Name</div>
@@ -354,130 +276,119 @@ body{font-family:'Inter',sans-serif;background:var(--surface);color:var(--text);
         <input type="text" class="s-input" id="guestSearch" placeholder="Enter your first or last name…" autocomplete="off" autocorrect="off" oninput="onSearch(this.value)">
         <button class="s-clear" id="sClear" onclick="clearSearch()">✕</button>
       </div>
-      <div class="search-hint">💡 You can also search using your spouse's name</div>
+      <div class="search-hint">💡 Both husband and wife can check in separately</div>
     </div>
     <div id="guestContent">
       <div class="prompt">
         <div class="prompt-icon">👋</div>
         <div class="prompt-title">Welcome!</div>
-        <div class="prompt-sub">Type your name in the box above<br>to locate your table and check yourself in.</div>
+        <div class="prompt-sub">Type your name above to find your table.<br>Each person checks in individually.</div>
       </div>
     </div>
   </div>
 </div>
-
-<!-- ══════════════════════════════════════
-     ADMIN PAGE
-══════════════════════════════════════ -->
+ 
+<!-- ═══════════ ADMIN PAGE ═══════════ -->
 <div class="page" id="page-admin">
   <div class="admin-header">
     <div class="admin-header-inner">
-      <div class="ah-left">
+      <div>
         <div class="ah-title">Usher Dashboard</div>
         <div class="ah-sub" id="adminSub">Loading…</div>
       </div>
-      <div class="ah-right">
-        <button class="logout-btn" onclick="logout()">🚪 Log Out</button>
-      </div>
+      <button class="logout-btn" onclick="logout()">🚪 Log Out</button>
     </div>
   </div>
-
   <div class="admin-body">
-
-    <!-- Stats -->
+ 
     <div class="big-stats">
-      <div class="bs bs-t"><div class="bs-num" id="a-tot">0</div><div class="bs-lbl">Total Guests</div><div class="bs-sub">Registered</div></div>
+      <div class="bs bs-t"><div class="bs-num" id="a-tot">0</div><div class="bs-lbl">Total People</div><div class="bs-sub">All individuals</div></div>
       <div class="bs bs-g"><div class="bs-num" id="a-in">0</div><div class="bs-lbl">Checked In</div><div class="bs-sub">Present</div></div>
       <div class="bs bs-a"><div class="bs-num" id="a-out">0</div><div class="bs-lbl">Not Arrived</div><div class="bs-sub">Expected</div></div>
       <div class="bs bs-gold"><div class="bs-num" id="a-pct">0%</div><div class="bs-lbl">Attendance</div><div class="bs-sub">Rate</div></div>
     </div>
-
-    <!-- Progress -->
+ 
     <div class="prog-card">
       <div class="prog-hdr"><span class="prog-lbl">Overall Check-In Progress</span><span class="prog-pct" id="a-ppct">0%</span></div>
       <div class="prog-track"><div class="prog-fill" id="a-pfill" style="width:0%"></div></div>
     </div>
-
-    <!-- Actions -->
+ 
     <div class="abar">
       <button class="abtn abtn-teal" onclick="exportCSV()">⬇ Export CSV</button>
       <span class="abar-note">Auto-refreshes every 30s</span>
     </div>
-
-    <!-- Two lists -->
+ 
     <div class="admin-grid">
-
-      <!-- Checked In -->
+ 
       <div class="sc">
         <div class="sc-hdr"><div class="sc-title">✅ Checked In</div><div class="sc-badge" id="inBadge">0</div></div>
-        <div class="sc-search"><input type="text" placeholder="Search checked-in guests…" oninput="fAdmin('in',this.value)"></div>
+        <div class="sc-search"><input type="text" placeholder="Search…" oninput="fAdmin('in',this.value)"></div>
         <div class="sc-tabs">
           <div class="sc-tab active" onclick="aTab('in','all',this)">All</div>
           <div class="sc-tab" onclick="aTab('in','table',this)">By Table</div>
         </div>
         <div class="glist" id="listIn"></div>
       </div>
-
-      <!-- Not Arrived -->
+ 
       <div class="sc">
         <div class="sc-hdr"><div class="sc-title">⏳ Not Arrived</div><div class="sc-badge" id="outBadge">0</div></div>
-        <div class="sc-search"><input type="text" placeholder="Search pending guests…" oninput="fAdmin('out',this.value)"></div>
+        <div class="sc-search"><input type="text" placeholder="Search…" oninput="fAdmin('out',this.value)"></div>
         <div class="sc-tabs">
           <div class="sc-tab active" onclick="aTab('out','all',this)">All</div>
           <div class="sc-tab" onclick="aTab('out','table',this)">By Table</div>
         </div>
         <div class="glist" id="listOut"></div>
       </div>
-
-      <!-- Add Guest -->
+ 
       <div class="sc full">
-        <div class="sc-hdr"><div class="sc-title">➕ Add / Remove Guests</div></div>
-        <div class="add-guest-form">
-          <div class="ag-title">Add New Guest</div>
-          <div class="ag-row">
-            <input type="text" class="ag-input" id="agName" placeholder="Full Name *">
-            <input type="text" class="ag-input" id="agSpouse" placeholder="Spouse Name (optional)">
-            <select class="ag-select" id="agTable">
-              <option value="">Select Table *</option>
+        <div class="sc-hdr"><div class="sc-title">➕ Add New Guest</div></div>
+        <div class="add-form">
+          <div class="af-title">Add Walk-In Guest</div>
+          <div class="af-row">
+            <input type="text" class="af-input" id="afName" placeholder="Full Name *">
+            <select class="af-select" id="afTable"><option value="">Select Table *</option></select>
+            <select class="af-select" id="afRole">
+              <option value="Guest">Guest</option>
+              <option value="Spouse">Spouse</option>
+              <option value="Walk-in">Walk-in</option>
             </select>
-            <button class="ag-btn" onclick="addGuest()">+ Add Guest</button>
+            <button class="af-btn" onclick="addGuest()">+ Add</button>
           </div>
         </div>
       </div>
-
-      <!-- Table Breakdown -->
+ 
       <div class="sc full">
         <div class="sc-hdr"><div class="sc-title">📊 Table Breakdown</div><div class="sc-badge">20 Tables</div></div>
         <div id="tableBreakdown"></div>
       </div>
-
+ 
     </div>
   </div>
 </div>
-
-<!-- ── PASSWORD MODAL ── -->
-<div class="pw-overlay" id="pwOverlay" onclick="pwOverlayClick(event)">
+ 
+<!-- PASSWORD MODAL -->
+<div class="pw-overlay" id="pwOverlay" onclick="pwBgClick(event)">
   <div class="pw-box">
     <div class="pw-icon">🔐</div>
     <div class="pw-title">Staff Access</div>
-    <div class="pw-sub">Enter your usher password to access the admin dashboard</div>
+    <div class="pw-sub">Enter your usher password to access the dashboard</div>
     <input type="password" class="pw-input" id="pwInput" placeholder="••••••••" maxlength="20" onkeydown="if(event.key==='Enter')checkPw()">
-    <div class="pw-error" id="pwError"></div>
+    <div class="pw-error" id="pwErr"></div>
     <div class="pw-btns">
       <button class="pw-btn-main" onclick="checkPw()">Enter Dashboard</button>
-      <button class="pw-btn-cancel" onclick="closePwModal()">Cancel</button>
+      <button class="pw-btn-cancel" onclick="closePw()">Cancel</button>
     </div>
   </div>
 </div>
-
-<!-- ── GUEST MODAL ── -->
-<div class="overlay" id="overlay" onclick="overlayClick(event)">
+ 
+<!-- CHECKIN MODAL -->
+<div class="overlay" id="overlay" onclick="bgClick(event)">
   <div class="modal">
     <div class="modal-handle"></div>
     <div class="modal-body">
       <div class="mav" id="mav"></div>
       <div class="mname" id="mname"></div>
-      <div class="mspouse" id="mspouse"></div>
+      <div class="mrole" id="mrole"></div>
       <div class="mtbl-block">
         <div class="mtnum" id="mtnum"></div>
         <div><div class="mtlbl">Your Table</div><div class="mtname" id="mtname"></div></div>
@@ -490,255 +401,325 @@ body{font-family:'Inter',sans-serif;background:var(--surface);color:var(--text);
     </div>
   </div>
 </div>
-
-<!-- TOAST -->
+ 
 <div class="toast" id="toast"></div>
-
+ 
 <script>
-// ═══════════════════════════════════════
-//  CONFIG — change password here
-// ═══════════════════════════════════════
-const ADMIN_PASSWORD = '2026';
-
-// ═══════════════════════════════════════
-//  GUEST DATA
-// ═══════════════════════════════════════
+// ══════════════════════════════════════
+//  CONFIG
+// ══════════════════════════════════════
+const ADMIN_PASSWORD = 'cccg2026';
+ 
 const TABLE_NAMES = {
   1:'Unconditional',2:'Devoted',3:'Passionate',4:'Tender',5:'Affectionate',
   6:'Pure',7:'Heartfelt',8:'Compassionate',9:'Gentle',10:'Radiant',
   11:'Soulful',12:'Warm',13:'Adoring',14:'Steadfast',15:'Loyal',
   16:'Beloved',17:'Delight',18:'Faithful',19:'Lovely',20:'Kindness'
 };
-
-let GUESTS = [
-  {id:1,name:"Sharon Yemi-Awodiran",spouse:"Yemi Awodiran",table:1},
-  {id:2,name:"Olusayo Adekunle",spouse:"Oluyemisi Adekunle",table:1},
-  {id:3,name:"Daniel Adewumi",spouse:"Grace Adewumi",table:1},
-  {id:4,name:"Dare Oyewo",spouse:"Ayo Oyewo",table:1},
-  {id:5,name:"Olanrewaju Mebude",spouse:"Olusoji Mebude",table:2},
-  {id:6,name:"Rebecca Johnson",spouse:"Olawale Johnson",table:2},
-  {id:7,name:"Betty Mensah",spouse:"Frank Mensah",table:2},
-  {id:8,name:"Osayi Ogieva",spouse:"Wale Isola",table:2},
-  {id:9,name:"Lovelyn Odeh",spouse:"Andrew Enyagberue",table:3},
-  {id:10,name:"Oluwatosin Ojo",spouse:"Yewande Olusola",table:3},
-  {id:11,name:"Ayo Fayoyin",spouse:"Faith Fayoyin",table:3},
-  {id:12,name:"Samuel Oluleke",spouse:"Rashell Oluleke",table:3},
-  {id:13,name:"Bukola Olagbaju",spouse:"Ife Olagbaju",table:4},
-  {id:14,name:"Elizabeth Iloh",spouse:"Stanley Iloh",table:4},
-  {id:15,name:"Olamide Omisore",spouse:"Oladayo Omisore",table:4},
-  {id:16,name:"Esther Showole",spouse:"Joseph Showole",table:4},
-  {id:17,name:"Leke Orimolade",spouse:"Yewande Orimolade",table:5},
-  {id:18,name:"Samuel Okesina",spouse:"Busola Keonna Okesina",table:5},
-  {id:19,name:"Adetola Oso",spouse:"Oluwadarasimi Oso",table:5},
-  {id:20,name:"Emis Nthuni",spouse:"",table:5},
-  {id:21,name:"AnjolaOluwa Wickliffe",spouse:"",table:5},
-  {id:22,name:"Lailah Juliet Audu",spouse:"",table:6},
-  {id:23,name:"Idorenyin Udoimuk",spouse:"Omomen Udoimuk",table:6},
-  {id:24,name:"Emilycent Omoregie",spouse:"Raphael Igbinoba Omoregie",table:6},
-  {id:25,name:"Egbaran Christopher",spouse:"Egbaran Blessing",table:6},
-  {id:26,name:"Tolutope Alade",spouse:"",table:6},
-  {id:27,name:"Omobola Balogun",spouse:"Olalekan Balogun",table:7},
-  {id:28,name:"Bimbo Ogunsola",spouse:"Seyi Ogunsola",table:7},
-  {id:29,name:"Deidre Nabalayo",spouse:"",table:7},
-  {id:30,name:"Adenike Olubajo",spouse:"Gboyega Olubajo",table:7},
-  {id:31,name:"Omolola Alabi",spouse:"",table:7},
-  {id:32,name:"Annivy Fynn",spouse:"Ransford Fynn",table:8},
-  {id:33,name:"Osaro Ogbeide",spouse:"Bamiyo Ogbeide",table:8},
-  {id:34,name:"Priscilla Akyema",spouse:"",table:8},
-  {id:35,name:"Yemisi Olatunji",spouse:"",table:8},
-  {id:36,name:"Beatrice Ugha",spouse:"",table:8},
-  {id:37,name:"Busayo Olatunji",spouse:"",table:8},
-  {id:38,name:"Kate Anizoba",spouse:"Dr Ogo Anizoba",table:9},
-  {id:39,name:"Ayomide Adebayo",spouse:"Onyx Adebayo",table:9},
-  {id:40,name:"Shalom Erimona",spouse:"",table:9},
-  {id:41,name:"David Omijeh",spouse:"Joan Omijeh",table:9},
-  {id:42,name:"Chiamaka Kelechi Zabbeh",spouse:"",table:9},
-  {id:43,name:"Wunmi Adebayo",spouse:"Lateef Adebayo",table:10},
-  {id:44,name:"Tunde Kehinde",spouse:"Habiba Kehinde",table:10},
-  {id:45,name:"Kehinde Kelvun Akinluyi",spouse:"Elizabeth Toyin Akinluyi",table:10},
-  {id:46,name:"Adeyemi Ogundipe",spouse:"Oluwatomisin Ogundipe",table:10},
-  {id:47,name:"Ekundayo Fademi",spouse:"Oluwasemiloore Fademi",table:11},
-  {id:48,name:"Abisola Olutokun",spouse:"Emmanuel Olutokun",table:11},
-  {id:49,name:"Joy Ogba",spouse:"",table:11},
-  {id:50,name:"Morayo Idowu",spouse:"",table:11},
-  {id:51,name:"Olumide Mebude",spouse:"",table:11},
-  {id:52,name:"Rebecca Grey",spouse:"",table:11},
-  {id:53,name:"Opeyemi Akinyemi-Babajide",spouse:"Ayodeji Babajide",table:12},
-  {id:54,name:"Elder Oladunni Akinyemi",spouse:"Mrs Bolaji Akinyemi",table:12},
-  {id:55,name:"Lydia Davids",spouse:"",table:12},
-  {id:56,name:"Mrs Violet Ozoemena",spouse:"",table:12},
-  {id:57,name:"Sarah Karakitie",spouse:"",table:12},
-  {id:58,name:"Barry Wolansky",spouse:"",table:12},
-  {id:59,name:"Oluseun Adekunle",spouse:"",table:13},
-  {id:60,name:"Christabel Ajoku",spouse:"",table:13},
-  {id:61,name:"Francisca Ochomma",spouse:"Enyinna Ochomma",table:13},
-  {id:62,name:"Dora Garba",spouse:"Douglas Olumese",table:13},
-  {id:63,name:"Eghosa Onaghise",spouse:"Eseosa Sharon Onaghise",table:13},
-  {id:64,name:"Fidele Laurentine Nengoue Tchinda",spouse:"Milaire Kuekou Mouafo",table:14},
-  {id:65,name:"Gentille Rucyahana",spouse:"Yuma Salumu",table:14},
-  {id:66,name:"Jacqueline Ouedraogo",spouse:"Medard Bouda",table:14},
-  {id:67,name:"Jason Oghuan",spouse:"Nwosu Onyinyechi",table:14},
-  {id:68,name:"Adenike Taiwo",spouse:"Oluwafemi Taiwo",table:15},
-  {id:69,name:"Temitope Ige",spouse:"Oluwafemi Ige",table:15},
-  {id:70,name:"Jonathan Akor",spouse:"Comfort Okpanachi",table:15},
-  {id:71,name:"Moyosore Olumola-Davies",spouse:"Solomon Olumola-Davies",table:15},
-  {id:72,name:"Oladotun Olatunji",spouse:"Juliet Iquo Olatunji",table:16},
-  {id:73,name:"Olaniran Johnson",spouse:"Opeyemi Johnson",table:16},
-  {id:74,name:"Olatayo Idowu",spouse:"Adeola Idowu",table:16},
-  {id:75,name:"Oluremi Makinde",spouse:"Adeola Makinde",table:16},
-  {id:76,name:"Onome",spouse:"Tommy",table:17},
-  {id:77,name:"Wale Hassan",spouse:"Sola Hassan",table:17},
-  {id:78,name:"Racheal Omonigho",spouse:"Omoefe Omonigho",table:17},
-  {id:79,name:"Stephen Ademosu",spouse:"Eniola Ademosu",table:17},
-  {id:80,name:"Taiwo Bamiduro",spouse:"Oluwatoyin Bamiduro",table:18},
-  {id:81,name:"Temitola Awosika",spouse:"Peter Awosika",table:18},
-  {id:82,name:"Temitope Adebayo",spouse:"Motunrayo Abraham-Adebayo",table:18},
-  {id:83,name:"Tolu Akinfaderin",spouse:"Seyi Akinfaderin",table:18},
-  {id:84,name:"Adeoye Egbewole",spouse:"Ololade Egbewole",table:19},
-  {id:85,name:"Emmanuel Odogu",spouse:"Uyoyo Odogu",table:19},
-  {id:86,name:"Jeremiah Ejemeyovwi",spouse:"Kehinde Boyo",table:19},
-  {id:87,name:"Wilfred Akporido",spouse:"Ufuoma Akporido",table:19},
-  {id:88,name:"Anthony Hammond",spouse:"",table:20},
-  {id:89,name:"Timi",spouse:"",table:20},
-  {id:90,name:"Tayo",spouse:"",table:20},
-  {id:91,name:"McKenzie",spouse:"",table:20},
-  {id:92,name:"Matilda Nmbeh Achuo",spouse:"",table:20},
+ 
+// ══════════════════════════════════════
+//  DATA — Each person is a SEPARATE entry
+//  type: 'couple-primary' | 'couple-spouse' | 'single' | 'solo'
+//  groupId links husband and wife together for display
+// ══════════════════════════════════════
+let PEOPLE = [
+  // TABLE 1 — Unconditional
+  {id:1,  name:"Sharon Yemi-Awodiran",  role:"Primary Guest", table:1, groupId:1,  type:"couple-primary"},
+  {id:2,  name:"Yemi Awodiran",          role:"Spouse",         table:1, groupId:1,  type:"couple-spouse"},
+  {id:3,  name:"Olusayo Adekunle",       role:"Primary Guest", table:1, groupId:2,  type:"couple-primary"},
+  {id:4,  name:"Oluyemisi Adekunle",     role:"Spouse",         table:1, groupId:2,  type:"couple-spouse"},
+  {id:5,  name:"Daniel Adewumi",         role:"Primary Guest", table:1, groupId:3,  type:"couple-primary"},
+  {id:6,  name:"Grace Adewumi",          role:"Spouse",         table:1, groupId:3,  type:"couple-spouse"},
+  {id:7,  name:"Dare Oyewo",             role:"Primary Guest", table:1, groupId:4,  type:"couple-primary"},
+  {id:8,  name:"Ayo Oyewo",              role:"Spouse",         table:1, groupId:4,  type:"couple-spouse"},
+  // TABLE 2 — Devoted
+  {id:9,  name:"Olanrewaju Mebude",      role:"Primary Guest", table:2, groupId:5,  type:"couple-primary"},
+  {id:10, name:"Olusoji Mebude",         role:"Spouse",         table:2, groupId:5,  type:"couple-spouse"},
+  {id:11, name:"Rebecca Johnson",        role:"Primary Guest", table:2, groupId:6,  type:"couple-primary"},
+  {id:12, name:"Olawale Johnson",        role:"Spouse",         table:2, groupId:6,  type:"couple-spouse"},
+  {id:13, name:"Betty Mensah",           role:"Primary Guest", table:2, groupId:7,  type:"couple-primary"},
+  {id:14, name:"Frank Mensah",           role:"Spouse",         table:2, groupId:7,  type:"couple-spouse"},
+  {id:15, name:"Osayi Ogieva",           role:"Primary Guest", table:2, groupId:8,  type:"couple-primary"},
+  {id:16, name:"Wale Isola",             role:"Spouse",         table:2, groupId:8,  type:"couple-spouse"},
+  // TABLE 3 — Passionate
+  {id:17, name:"Lovelyn Odeh",           role:"Primary Guest", table:3, groupId:9,  type:"couple-primary"},
+  {id:18, name:"Andrew Enyagberue",      role:"Spouse",         table:3, groupId:9,  type:"couple-spouse"},
+  {id:19, name:"Oluwatosin Ojo",         role:"Primary Guest", table:3, groupId:10, type:"couple-primary"},
+  {id:20, name:"Yewande Olusola",        role:"Spouse",         table:3, groupId:10, type:"couple-spouse"},
+  {id:21, name:"Ayo Fayoyin",            role:"Primary Guest", table:3, groupId:11, type:"couple-primary"},
+  {id:22, name:"Faith Fayoyin",          role:"Spouse",         table:3, groupId:11, type:"couple-spouse"},
+  {id:23, name:"Samuel Oluleke",         role:"Primary Guest", table:3, groupId:12, type:"couple-primary"},
+  {id:24, name:"Rashell Oluleke",        role:"Spouse",         table:3, groupId:12, type:"couple-spouse"},
+  // TABLE 4 — Tender
+  {id:25, name:"Bukola Olagbaju",        role:"Primary Guest", table:4, groupId:13, type:"couple-primary"},
+  {id:26, name:"Ife Olagbaju",           role:"Spouse",         table:4, groupId:13, type:"couple-spouse"},
+  {id:27, name:"Elizabeth Iloh",         role:"Primary Guest", table:4, groupId:14, type:"couple-primary"},
+  {id:28, name:"Stanley Iloh",           role:"Spouse",         table:4, groupId:14, type:"couple-spouse"},
+  {id:29, name:"Olamide Omisore",        role:"Primary Guest", table:4, groupId:15, type:"couple-primary"},
+  {id:30, name:"Oladayo Omisore",        role:"Spouse",         table:4, groupId:15, type:"couple-spouse"},
+  {id:31, name:"Esther Showole",         role:"Primary Guest", table:4, groupId:16, type:"couple-primary"},
+  {id:32, name:"Joseph Showole",         role:"Spouse",         table:4, groupId:16, type:"couple-spouse"},
+  // TABLE 5 — Affectionate
+  {id:33, name:"Leke Orimolade",         role:"Primary Guest", table:5, groupId:17, type:"couple-primary"},
+  {id:34, name:"Yewande Orimolade",      role:"Spouse",         table:5, groupId:17, type:"couple-spouse"},
+  {id:35, name:"Samuel Okesina",         role:"Primary Guest", table:5, groupId:18, type:"couple-primary"},
+  {id:36, name:"Busola Keonna Okesina",  role:"Spouse",         table:5, groupId:18, type:"couple-spouse"},
+  {id:37, name:"Adetola Oso",            role:"Primary Guest", table:5, groupId:19, type:"couple-primary"},
+  {id:38, name:"Oluwadarasimi Oso",      role:"Spouse",         table:5, groupId:19, type:"couple-spouse"},
+  {id:39, name:"Emis Nthuni",            role:"Guest",          table:5, groupId:20, type:"single"},
+  {id:40, name:"AnjolaOluwa Wickliffe",  role:"Guest",          table:5, groupId:21, type:"single"},
+  // TABLE 6 — Pure
+  {id:41, name:"Lailah Juliet Audu",     role:"Guest",          table:6, groupId:22, type:"single"},
+  {id:42, name:"Idorenyin Udoimuk",      role:"Primary Guest", table:6, groupId:23, type:"couple-primary"},
+  {id:43, name:"Omomen Udoimuk",         role:"Spouse",         table:6, groupId:23, type:"couple-spouse"},
+  {id:44, name:"Emilycent Omoregie",     role:"Primary Guest", table:6, groupId:24, type:"couple-primary"},
+  {id:45, name:"Raphael Igbinoba Omoregie",role:"Spouse",      table:6, groupId:24, type:"couple-spouse"},
+  {id:46, name:"Egbaran Christopher",    role:"Primary Guest", table:6, groupId:25, type:"couple-primary"},
+  {id:47, name:"Egbaran Blessing",       role:"Spouse",         table:6, groupId:25, type:"couple-spouse"},
+  {id:48, name:"Tolutope Alade",         role:"Guest",          table:6, groupId:26, type:"solo"},
+  // TABLE 7 — Heartfelt
+  {id:49, name:"Omobola Balogun",        role:"Primary Guest", table:7, groupId:27, type:"couple-primary"},
+  {id:50, name:"Olalekan Balogun",       role:"Spouse",         table:7, groupId:27, type:"couple-spouse"},
+  {id:51, name:"Bimbo Ogunsola",         role:"Primary Guest", table:7, groupId:28, type:"couple-primary"},
+  {id:52, name:"Seyi Ogunsola",          role:"Spouse",         table:7, groupId:28, type:"couple-spouse"},
+  {id:53, name:"Deidre Nabalayo",        role:"Guest",          table:7, groupId:29, type:"single"},
+  {id:54, name:"Adenike Olubajo",        role:"Primary Guest", table:7, groupId:30, type:"couple-primary"},
+  {id:55, name:"Gboyega Olubajo",        role:"Spouse",         table:7, groupId:30, type:"couple-spouse"},
+  {id:56, name:"Omolola Alabi",          role:"Guest",          table:7, groupId:31, type:"single"},
+  // TABLE 8 — Compassionate
+  {id:57, name:"Annivy Fynn",            role:"Primary Guest", table:8, groupId:32, type:"couple-primary"},
+  {id:58, name:"Ransford Fynn",          role:"Spouse",         table:8, groupId:32, type:"couple-spouse"},
+  {id:59, name:"Osaro Ogbeide",          role:"Primary Guest", table:8, groupId:33, type:"couple-primary"},
+  {id:60, name:"Bamiyo Ogbeide",         role:"Spouse",         table:8, groupId:33, type:"couple-spouse"},
+  {id:61, name:"Priscilla Akyema",       role:"Guest",          table:8, groupId:34, type:"single"},
+  {id:62, name:"Yemisi Olatunji",        role:"Guest",          table:8, groupId:35, type:"single"},
+  {id:63, name:"Beatrice Ugha",          role:"Guest",          table:8, groupId:36, type:"single"},
+  {id:64, name:"Busayo Olatunji",        role:"Guest",          table:8, groupId:37, type:"single"},
+  // TABLE 9 — Gentle
+  {id:65, name:"Kate Anizoba",           role:"Primary Guest", table:9, groupId:38, type:"couple-primary"},
+  {id:66, name:"Dr Ogo Anizoba",         role:"Spouse",         table:9, groupId:38, type:"couple-spouse"},
+  {id:67, name:"Ayomide Adebayo",        role:"Primary Guest", table:9, groupId:39, type:"couple-primary"},
+  {id:68, name:"Onyx Adebayo",           role:"Spouse",         table:9, groupId:39, type:"couple-spouse"},
+  {id:69, name:"Shalom Erimona",         role:"Guest",          table:9, groupId:40, type:"solo"},
+  {id:70, name:"David Omijeh",           role:"Primary Guest", table:9, groupId:41, type:"couple-primary"},
+  {id:71, name:"Joan Omijeh",            role:"Spouse",         table:9, groupId:41, type:"couple-spouse"},
+  {id:72, name:"Chiamaka Kelechi Zabbeh",role:"Guest",          table:9, groupId:42, type:"single"},
+  // TABLE 10 — Radiant
+  {id:73, name:"Wunmi Adebayo",          role:"Primary Guest", table:10, groupId:43, type:"couple-primary"},
+  {id:74, name:"Lateef Adebayo",         role:"Spouse",         table:10, groupId:43, type:"couple-spouse"},
+  {id:75, name:"Tunde Kehinde",          role:"Primary Guest", table:10, groupId:44, type:"couple-primary"},
+  {id:76, name:"Habiba Kehinde",         role:"Spouse",         table:10, groupId:44, type:"couple-spouse"},
+  {id:77, name:"Kehinde Kelvun Akinluyi",role:"Primary Guest", table:10, groupId:45, type:"couple-primary"},
+  {id:78, name:"Elizabeth Toyin Akinluyi",role:"Spouse",        table:10, groupId:45, type:"couple-spouse"},
+  {id:79, name:"Adeyemi Ogundipe",       role:"Primary Guest", table:10, groupId:46, type:"couple-primary"},
+  {id:80, name:"Oluwatomisin Ogundipe",  role:"Spouse",         table:10, groupId:46, type:"couple-spouse"},
+  // TABLE 11 — Soulful
+  {id:81, name:"Ekundayo Fademi",        role:"Primary Guest", table:11, groupId:47, type:"couple-primary"},
+  {id:82, name:"Oluwasemiloore Fademi",  role:"Spouse",         table:11, groupId:47, type:"couple-spouse"},
+  {id:83, name:"Abisola Olutokun",       role:"Primary Guest", table:11, groupId:48, type:"couple-primary"},
+  {id:84, name:"Emmanuel Olutokun",      role:"Spouse",         table:11, groupId:48, type:"couple-spouse"},
+  {id:85, name:"Joy Ogba",              role:"Guest",          table:11, groupId:49, type:"single"},
+  {id:86, name:"Morayo Idowu",           role:"Guest",          table:11, groupId:50, type:"solo"},
+  {id:87, name:"Olumide Mebude",         role:"Guest",          table:11, groupId:51, type:"single"},
+  {id:88, name:"Rebecca Grey",           role:"Guest",          table:11, groupId:52, type:"single"},
+  // TABLE 12 — Warm
+  {id:89, name:"Opeyemi Akinyemi-Babajide",role:"Primary Guest",table:12, groupId:53, type:"couple-primary"},
+  {id:90, name:"Ayodeji Babajide",       role:"Spouse",         table:12, groupId:53, type:"couple-spouse"},
+  {id:91, name:"Elder Oladunni Akinyemi",role:"Primary Guest", table:12, groupId:54, type:"couple-primary"},
+  {id:92, name:"Mrs Bolaji Akinyemi",    role:"Spouse",         table:12, groupId:54, type:"couple-spouse"},
+  {id:93, name:"Lydia Davids",           role:"Guest",          table:12, groupId:55, type:"single"},
+  {id:94, name:"Mrs Violet Ozoemena",    role:"Guest",          table:12, groupId:56, type:"solo"},
+  {id:95, name:"Sarah Karakitie",        role:"Guest",          table:12, groupId:57, type:"single"},
+  {id:96, name:"Barry Wolansky",         role:"Guest",          table:12, groupId:58, type:"single"},
+  // TABLE 13 — Adoring
+  {id:97, name:"Oluseun Adekunle",       role:"Guest",          table:13, groupId:59, type:"single"},
+  {id:98, name:"Christabel Ajoku",       role:"Guest",          table:13, groupId:60, type:"single"},
+  {id:99, name:"Francisca Ochomma",      role:"Primary Guest", table:13, groupId:61, type:"couple-primary"},
+  {id:100,name:"Enyinna Ochomma",        role:"Spouse",         table:13, groupId:61, type:"couple-spouse"},
+  {id:101,name:"Dora Garba",             role:"Primary Guest", table:13, groupId:62, type:"couple-primary"},
+  {id:102,name:"Douglas Olumese",        role:"Spouse",         table:13, groupId:62, type:"couple-spouse"},
+  {id:103,name:"Eghosa Onaghise",        role:"Primary Guest", table:13, groupId:63, type:"couple-primary"},
+  {id:104,name:"Eseosa Sharon Onaghise", role:"Spouse",         table:13, groupId:63, type:"couple-spouse"},
+  // TABLE 14 — Steadfast
+  {id:105,name:"Fidele Laurentine Nengoue Tchinda",role:"Primary Guest",table:14, groupId:64, type:"couple-primary"},
+  {id:106,name:"Milaire Kuekou Mouafo",  role:"Spouse",         table:14, groupId:64, type:"couple-spouse"},
+  {id:107,name:"Gentille Rucyahana",     role:"Primary Guest", table:14, groupId:65, type:"couple-primary"},
+  {id:108,name:"Yuma Salumu",            role:"Spouse",         table:14, groupId:65, type:"couple-spouse"},
+  {id:109,name:"Jacqueline Ouedraogo",   role:"Primary Guest", table:14, groupId:66, type:"couple-primary"},
+  {id:110,name:"Medard Bouda",           role:"Spouse",         table:14, groupId:66, type:"couple-spouse"},
+  {id:111,name:"Jason Oghuan",           role:"Primary Guest", table:14, groupId:67, type:"couple-primary"},
+  {id:112,name:"Nwosu Onyinyechi",       role:"Spouse",         table:14, groupId:67, type:"couple-spouse"},
+  // TABLE 15 — Loyal
+  {id:113,name:"Adenike Taiwo",          role:"Primary Guest", table:15, groupId:68, type:"couple-primary"},
+  {id:114,name:"Oluwafemi Taiwo",        role:"Spouse",         table:15, groupId:68, type:"couple-spouse"},
+  {id:115,name:"Temitope Ige",           role:"Primary Guest", table:15, groupId:69, type:"couple-primary"},
+  {id:116,name:"Oluwafemi Ige",          role:"Spouse",         table:15, groupId:69, type:"couple-spouse"},
+  {id:117,name:"Jonathan Akor",          role:"Primary Guest", table:15, groupId:70, type:"couple-primary"},
+  {id:118,name:"Comfort Okpanachi",      role:"Spouse",         table:15, groupId:70, type:"couple-spouse"},
+  {id:119,name:"Moyosore Olumola-Davies",role:"Primary Guest", table:15, groupId:71, type:"couple-primary"},
+  {id:120,name:"Solomon Olumola-Davies", role:"Spouse",         table:15, groupId:71, type:"couple-spouse"},
+  // TABLE 16 — Beloved
+  {id:121,name:"Oladotun Olatunji",      role:"Primary Guest", table:16, groupId:72, type:"couple-primary"},
+  {id:122,name:"Juliet Iquo Olatunji",   role:"Spouse",         table:16, groupId:72, type:"couple-spouse"},
+  {id:123,name:"Olaniran Johnson",       role:"Primary Guest", table:16, groupId:73, type:"couple-primary"},
+  {id:124,name:"Opeyemi Johnson",        role:"Spouse",         table:16, groupId:73, type:"couple-spouse"},
+  {id:125,name:"Olatayo Idowu",          role:"Primary Guest", table:16, groupId:74, type:"couple-primary"},
+  {id:126,name:"Adeola Idowu",           role:"Spouse",         table:16, groupId:74, type:"couple-spouse"},
+  {id:127,name:"Oluremi Makinde",        role:"Primary Guest", table:16, groupId:75, type:"couple-primary"},
+  {id:128,name:"Adeola Makinde",         role:"Spouse",         table:16, groupId:75, type:"couple-spouse"},
+  // TABLE 17 — Delight
+  {id:129,name:"Onome",                  role:"Primary Guest", table:17, groupId:76, type:"couple-primary"},
+  {id:130,name:"Tommy",                  role:"Spouse",         table:17, groupId:76, type:"couple-spouse"},
+  {id:131,name:"Wale Hassan",            role:"Primary Guest", table:17, groupId:77, type:"couple-primary"},
+  {id:132,name:"Sola Hassan",            role:"Spouse",         table:17, groupId:77, type:"couple-spouse"},
+  {id:133,name:"Racheal Omonigho",       role:"Primary Guest", table:17, groupId:78, type:"couple-primary"},
+  {id:134,name:"Omoefe Omonigho",        role:"Spouse",         table:17, groupId:78, type:"couple-spouse"},
+  {id:135,name:"Stephen Ademosu",        role:"Primary Guest", table:17, groupId:79, type:"couple-primary"},
+  {id:136,name:"Eniola Ademosu",         role:"Spouse",         table:17, groupId:79, type:"couple-spouse"},
+  // TABLE 18 — Faithful
+  {id:137,name:"Taiwo Bamiduro",         role:"Primary Guest", table:18, groupId:80, type:"couple-primary"},
+  {id:138,name:"Oluwatoyin Bamiduro",    role:"Spouse",         table:18, groupId:80, type:"couple-spouse"},
+  {id:139,name:"Temitola Awosika",       role:"Primary Guest", table:18, groupId:81, type:"couple-primary"},
+  {id:140,name:"Peter Awosika",          role:"Spouse",         table:18, groupId:81, type:"couple-spouse"},
+  {id:141,name:"Temitope Adebayo",       role:"Primary Guest", table:18, groupId:82, type:"couple-primary"},
+  {id:142,name:"Motunrayo Abraham-Adebayo",role:"Spouse",      table:18, groupId:82, type:"couple-spouse"},
+  {id:143,name:"Tolu Akinfaderin",       role:"Primary Guest", table:18, groupId:83, type:"couple-primary"},
+  {id:144,name:"Seyi Akinfaderin",       role:"Spouse",         table:18, groupId:83, type:"couple-spouse"},
+  // TABLE 19 — Lovely
+  {id:145,name:"Adeoye Egbewole",        role:"Primary Guest", table:19, groupId:84, type:"couple-primary"},
+  {id:146,name:"Ololade Egbewole",       role:"Spouse",         table:19, groupId:84, type:"couple-spouse"},
+  {id:147,name:"Emmanuel Odogu",         role:"Primary Guest", table:19, groupId:85, type:"couple-primary"},
+  {id:148,name:"Uyoyo Odogu",            role:"Spouse",         table:19, groupId:85, type:"couple-spouse"},
+  {id:149,name:"Jeremiah Ejemeyovwi",    role:"Primary Guest", table:19, groupId:86, type:"couple-primary"},
+  {id:150,name:"Kehinde Boyo",           role:"Spouse",         table:19, groupId:86, type:"couple-spouse"},
+  {id:151,name:"Wilfred Akporido",       role:"Primary Guest", table:19, groupId:87, type:"couple-primary"},
+  {id:152,name:"Ufuoma Akporido",        role:"Spouse",         table:19, groupId:87, type:"couple-spouse"},
+  // TABLE 20 — Kindness
+  {id:153,name:"Anthony Hammond",        role:"Guest",          table:20, groupId:88, type:"single"},
+  {id:154,name:"Timi",                   role:"Guest",          table:20, groupId:89, type:"single"},
+  {id:155,name:"Tayo",                   role:"Guest",          table:20, groupId:90, type:"single"},
+  {id:156,name:"McKenzie",               role:"Guest",          table:20, groupId:91, type:"single"},
+  {id:157,name:"Matilda Nmbeh Achuo",    role:"Guest",          table:20, groupId:92, type:"single"},
 ];
-
-// ═══════════════════════════════════════
+ 
+// ══════════════════════════════════════
 //  STATE
-// ═══════════════════════════════════════
+// ══════════════════════════════════════
 const COLORS=['#00695c','#00796b','#00838f','#0277bd','#1565c0','#283593','#4527a0','#6a1b9a','#880e4f','#b71c1c','#bf360c','#e65100','#f57f17','#558b2f','#2e7d32','#004d40','#006064','#01579b','#37474f','#4e342e'];
 let checkedIn={};
 let selectedId=null;
 let inTab='all',outTab='all',inQ='',outQ='';
-let nextId=1000;
-
+let nextId=2000;
+ 
 const col=t=>COLORS[(t-1)%COLORS.length];
 const ini=n=>n.trim().split(' ').slice(0,2).map(x=>x[0]||'').join('').toUpperCase();
-const validSp=s=>s&&!['NA','N/A',''].includes(s.trim());
 const tName=t=>TABLE_NAMES[t]||`Table ${t}`;
-function save(){localStorage.setItem('cle_ci',JSON.stringify(checkedIn));localStorage.setItem('cle_guests',JSON.stringify(GUESTS));}
+function save(){localStorage.setItem('cle_ci2',JSON.stringify(checkedIn));localStorage.setItem('cle_people',JSON.stringify(PEOPLE));}
 function load(){
-  checkedIn=JSON.parse(localStorage.getItem('cle_ci')||'{}');
-  const saved=localStorage.getItem('cle_guests');
-  if(saved) GUESTS=JSON.parse(saved);
-  nextId=Math.max(...GUESTS.map(g=>g.id),999)+1;
+  checkedIn=JSON.parse(localStorage.getItem('cle_ci2')||'{}');
+  const s=localStorage.getItem('cle_people');
+  if(s) PEOPLE=JSON.parse(s);
+  nextId=Math.max(...PEOPLE.map(p=>p.id),1999)+1;
 }
-
-// ═══════════════════════════════════════
+ 
+// ══════════════════════════════════════
 //  PASSWORD
-// ═══════════════════════════════════════
-function openPwModal(){
-  document.getElementById('pwOverlay').classList.add('open');
-  document.getElementById('pwInput').value='';
-  document.getElementById('pwError').textContent='';
-  setTimeout(()=>document.getElementById('pwInput').focus(),200);
-}
-function closePwModal(){document.getElementById('pwOverlay').classList.remove('open')}
-function pwOverlayClick(e){if(e.target===document.getElementById('pwOverlay'))closePwModal()}
+// ══════════════════════════════════════
+function openPw(){document.getElementById('pwOverlay').classList.add('open');document.getElementById('pwInput').value='';document.getElementById('pwErr').textContent='';setTimeout(()=>document.getElementById('pwInput').focus(),200)}
+function closePw(){document.getElementById('pwOverlay').classList.remove('open')}
+function pwBgClick(e){if(e.target===document.getElementById('pwOverlay'))closePw()}
 function checkPw(){
   const v=document.getElementById('pwInput').value;
-  if(v===ADMIN_PASSWORD){
-    closePwModal();
-    showAdminPage();
-  } else {
-    document.getElementById('pwError').textContent='❌ Incorrect password. Please try again.';
-    document.getElementById('pwInput').value='';
-    document.getElementById('pwInput').focus();
-  }
+  if(v===ADMIN_PASSWORD){closePw();showAdmin();}
+  else{document.getElementById('pwErr').textContent='❌ Incorrect password. Please try again.';document.getElementById('pwInput').value='';document.getElementById('pwInput').focus();}
 }
-
-// ═══════════════════════════════════════
-//  PAGE SWITCH
-// ═══════════════════════════════════════
-function showAdminPage(){
+function showAdmin(){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-admin').classList.add('active');
-  buildTableSelect();
-  refreshAdmin();
+  buildTableSelect();refreshAdmin();
 }
-function showGuestPage(){
+function logout(){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-guest').classList.add('active');
+  toast('Logged out','ok');
 }
-function logout(){showGuestPage();toast('Logged out successfully','ok')}
-
-// ═══════════════════════════════════════
-//  STATS
-// ═══════════════════════════════════════
-function updateStats(){
-  const total=GUESTS.length;
-  const checked=Object.values(checkedIn).filter(Boolean).length;
-  const pending=total-checked;
-  const pct=total>0?Math.round((checked/total)*100):0;
-  document.getElementById('a-tot').textContent=total;
-  document.getElementById('a-in').textContent=checked;
-  document.getElementById('a-out').textContent=pending;
-  document.getElementById('a-pct').textContent=pct+'%';
-  document.getElementById('a-ppct').textContent=pct+'%';
-  document.getElementById('a-pfill').style.width=pct+'%';
-  document.getElementById('inBadge').textContent=checked;
-  document.getElementById('outBadge').textContent=pending;
-  const now=new Date();
-  document.getElementById('adminSub').textContent=`Updated: ${now.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})} · The Covenant Love Experience`;
-}
-
-// ═══════════════════════════════════════
-//  GUEST SEARCH (public page)
-// ═══════════════════════════════════════
+ 
+// ══════════════════════════════════════
+//  GUEST SEARCH
+// ══════════════════════════════════════
 function onSearch(val){
   document.getElementById('sClear').classList.toggle('show',val.length>0);
   if(!val.trim()){showPrompt();return;}
   const ql=val.toLowerCase();
-  const m=GUESTS.filter(g=>g.name.toLowerCase().includes(ql)||(validSp(g.spouse)&&g.spouse.toLowerCase().includes(ql)));
-  const area=document.getElementById('guestContent');
-  if(!m.length){
-    area.innerHTML=`<div class="empty"><div class="ei">🔍</div><p>No guests found for "<strong>${val}</strong>".<br>Ask an usher for assistance.</p></div>`;
+  // Find matching people
+  const matchPeople=PEOPLE.filter(p=>p.name.toLowerCase().includes(ql));
+  if(!matchPeople.length){
+    document.getElementById('guestContent').innerHTML=`<div class="empty"><div class="ei">🔍</div><p>No one found for "<strong>${val}</strong>".<br>Try a different spelling or ask an usher.</p></div>`;
     return;
   }
-  area.innerHTML=`<div class="results-hdr"><div class="results-ct"><strong>${m.length}</strong> guest${m.length!==1?'s':''} found</div></div>`+
-    m.map(g=>{
-      const isIn=checkedIn[g.id];const c=col(g.table);const sp=validSp(g.spouse)?`& ${g.spouse}`:'';
-      return `<div class="rcard ${isIn?'is-in':''}" onclick="openModal(${g.id})">
-        <div class="av" style="background:${c}">${ini(g.name)}</div>
-        <div class="rbody">
-          <div class="rname">${g.name}</div>
-          ${sp?`<div class="rspouse">${sp}</div>`:''}
-        </div>
-        <div class="rright">
-          <div class="tpill" style="background:${c}">Table ${g.table}</div>
-          <div class="tname-sm">${tName(g.table)}</div>
-          <div class="srow"><div class="sdot ${isIn?'g':'gr'}"></div><span class="${isIn?'sin':'sout'}">${isIn?'Checked In':'Tap to Check In'}</span></div>
-        </div>
-      </div>`;
+  // Get unique groupIds from matches
+  const matchGroupIds=[...new Set(matchPeople.map(p=>p.groupId))];
+  // Render group cards
+  const area=document.getElementById('guestContent');
+  area.innerHTML=`<div class="results-hdr"><div class="results-ct"><strong>${matchPeople.length}</strong> person${matchPeople.length!==1?'s':''} found</div></div>`+
+    matchGroupIds.map(gid=>{
+      const members=PEOPLE.filter(p=>p.groupId===gid);
+      return buildGroupCard(members);
     }).join('');
 }
-
-function clearSearch(){
-  document.getElementById('guestSearch').value='';
-  document.getElementById('sClear').classList.remove('show');
-  showPrompt();
+ 
+function buildGroupCard(members){
+  const p0=members[0];
+  const c=col(p0.table);
+  const isCouple=members.some(m=>m.type==='couple-primary')||members.some(m=>m.type==='couple-spouse');
+  const isSolo=members[0].type==='solo';
+  let typeLabel='';
+  let typeClass='';
+  if(members.length===2&&isCouple){typeLabel='Couple';typeClass='type-couple';}
+  else if(isSolo){typeLabel='Guest (Spouse not attending)';typeClass='type-solo';}
+  else{typeLabel='Individual Guest';typeClass='type-single';}
+ 
+  return `<div class="group-card">
+    <div class="group-card-header">
+      <div class="group-table-pill">
+        <div class="tpill" style="background:${c}">Table ${p0.table}</div>
+        <span class="tname-sm">${tName(p0.table)}</span>
+      </div>
+      <span class="group-type ${typeClass}">${typeLabel}</span>
+    </div>
+    ${members.map(m=>{
+      const isIn=checkedIn[m.id];
+      return `<div class="person-row ${isIn?'is-in':''}" onclick="openModal(${m.id})">
+        <div class="av" style="background:${c}">${ini(m.name)}</div>
+        <div class="pinfo">
+          <div class="pname">${m.name}</div>
+          <div class="prole">${m.role}</div>
+        </div>
+        <div class="pstatus">
+          <div class="sdot ${isIn?'g':'gr'}"></div>
+          <span class="${isIn?'sin':'sout'}">${isIn?'Checked In':'Tap to Check In'}</span>
+        </div>
+      </div>`;
+    }).join('')}
+  </div>`;
 }
-
-function showPrompt(){
-  document.getElementById('guestContent').innerHTML=`<div class="prompt"><div class="prompt-icon">👋</div><div class="prompt-title">Welcome!</div><div class="prompt-sub">Type your name in the box above<br>to locate your table and check yourself in.</div></div>`;
-}
-
-// ═══════════════════════════════════════
-//  GUEST MODAL (self check-in)
-// ═══════════════════════════════════════
+ 
+function clearSearch(){document.getElementById('guestSearch').value='';document.getElementById('sClear').classList.remove('show');showPrompt();}
+function showPrompt(){document.getElementById('guestContent').innerHTML=`<div class="prompt"><div class="prompt-icon">👋</div><div class="prompt-title">Welcome!</div><div class="prompt-sub">Type your name above to find your table.<br>Each person checks in individually.</div></div>`;}
+ 
+// ══════════════════════════════════════
+//  CHECKIN MODAL
+// ══════════════════════════════════════
 function openModal(id){
-  const g=GUESTS.find(x=>x.id===id);if(!g)return;
+  const p=PEOPLE.find(x=>x.id===id);if(!p)return;
   selectedId=id;
-  const isIn=checkedIn[id];const c=col(g.table);
-  const sp=validSp(g.spouse)?`& ${g.spouse}`:'Individual guest';
-  document.getElementById('mav').textContent=ini(g.name);
+  const isIn=checkedIn[id];const c=col(p.table);
+  document.getElementById('mav').textContent=ini(p.name);
   document.getElementById('mav').style.background=c;
-  document.getElementById('mname').textContent=g.name;
-  document.getElementById('mspouse').textContent=sp;
-  document.getElementById('mtnum').textContent=g.table;
-  document.getElementById('mtname').textContent=tName(g.table);
+  document.getElementById('mname').textContent=p.name;
+  document.getElementById('mrole').textContent=p.role;
+  document.getElementById('mtnum').textContent=p.table;
+  document.getElementById('mtname').textContent=tName(p.table);
   const st=document.getElementById('mstatus');
   st.className='mstatus '+(isIn?'ms-yes':'ms-no');
   st.textContent=isIn?'✓ Already checked in':'⏳ Not yet checked in';
@@ -751,162 +732,150 @@ function confirmCheckin(){
   if(!selectedId)return;
   const wasIn=checkedIn[selectedId];
   checkedIn[selectedId]=!wasIn;save();
-  const g=GUESTS.find(x=>x.id===selectedId);
+  const p=PEOPLE.find(x=>x.id===selectedId);
   closeModal();
   onSearch(document.getElementById('guestSearch').value);
-  toast(wasIn?`↩ ${g.name.split(' ')[0]} removed`:`✓ ${g.name.split(' ')[0]} checked in!`,wasIn?'undo':'ok');
+  toast(wasIn?`↩ ${p.name.split(' ')[0]} removed`:`✓ ${p.name.split(' ')[0]} checked in!`,wasIn?'undo':'ok');
 }
-function closeModal(){document.getElementById('overlay').classList.remove('open');selectedId=null}
-function overlayClick(e){if(e.target===document.getElementById('overlay'))closeModal()}
-
-// ═══════════════════════════════════════
-//  ADMIN LISTS
-// ═══════════════════════════════════════
-function gRow(g,showBtn=true){
-  const c=col(g.table);const isIn=checkedIn[g.id];
-  return `<div class="grow">
-    <div class="gav" style="background:${c}">${ini(g.name)}</div>
-    <div class="ginfo">
-      <div class="gname">${g.name}</div>
-      <div class="gtable">Table ${g.table} · ${tName(g.table)}</div>
+function closeModal(){document.getElementById('overlay').classList.remove('open');selectedId=null;}
+function bgClick(e){if(e.target===document.getElementById('overlay'))closeModal();}
+ 
+// ══════════════════════════════════════
+//  ADMIN
+// ══════════════════════════════════════
+function updateStats(){
+  const total=PEOPLE.length;
+  const checked=Object.values(checkedIn).filter(Boolean).length;
+  const pending=total-checked;
+  const pct=total>0?Math.round((checked/total)*100):0;
+  document.getElementById('a-tot').textContent=total;
+  document.getElementById('a-in').textContent=checked;
+  document.getElementById('a-out').textContent=pending;
+  document.getElementById('a-pct').textContent=pct+'%';
+  document.getElementById('a-ppct').textContent=pct+'%';
+  document.getElementById('a-pfill').style.width=pct+'%';
+  document.getElementById('inBadge').textContent=checked;
+  document.getElementById('outBadge').textContent=pending;
+  const now=new Date();
+  document.getElementById('adminSub').textContent=`Updated: ${now.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})} · Covenant Love Experience`;
+}
+ 
+function agRow(p){
+  const c=col(p.table);const isIn=checkedIn[p.id];
+  const typeIcon=p.type==='couple-spouse'?'👫':p.type==='single'?'👤':p.type==='solo'?'👤':p.type==='couple-primary'?'👫':'👤';
+  return `<div class="ag-row">
+    <div class="ag-av" style="background:${c}">${ini(p.name)}</div>
+    <div class="ag-info">
+      <div class="ag-name">${p.name}</div>
+      <div class="ag-meta">${typeIcon} ${p.role} · Table ${p.table} · ${tName(p.table)}</div>
     </div>
-    ${showBtn?`<button class="gcheckin-btn ${isIn?'undo':'check-in'}" onclick="adminToggle(${g.id})">${isIn?'↩ Undo':'✓ Check In'}</button>`:''}
-    <div class="gbadge ${isIn?'bin':'bout'}">${isIn?'✓ In':'✕ Out'}</div>
-    <button class="remove-btn" onclick="removeGuest(${g.id})" title="Remove guest">✕</button>
+    <div class="ag-actions">
+      <button class="ag-toggle ${isIn?'undo':'check'}" onclick="adminToggle(${p.id})">${isIn?'↩ Undo':'✓ Check In'}</button>
+      <div class="ag-badge ${isIn?'bin':'bout'}">${isIn?'In':'Out'}</div>
+      <button class="remove-btn" onclick="removePerson(${p.id})" title="Remove">✕</button>
+    </div>
   </div>`;
 }
-
-function groupByTable(guests,showBtn){
-  return [...new Set(guests.map(g=>g.table))].sort((a,b)=>a-b).map(t=>{
-    const tg=guests.filter(g=>g.table===t);const c=col(t);
+ 
+function groupByTable(people){
+  return [...new Set(people.map(p=>p.table))].sort((a,b)=>a-b).map(t=>{
+    const tp=people.filter(p=>p.table===t);const c=col(t);
     return `<div style="border-bottom:1px solid #d4e6e1">
-      <div style="padding:7px 16px 3px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:${c}">Table ${t} · ${tName(t)}</div>
-      ${tg.map(g=>gRow(g,showBtn)).join('')}
+      <div class="group-divider" style="color:${c}">Table ${t} · ${tName(t)}</div>
+      ${tp.map(p=>agRow(p)).join('')}
     </div>`;
   }).join('');
 }
-
+ 
 function renderAdminList(type,q='',tab='all'){
   const el=document.getElementById(type==='in'?'listIn':'listOut');
-  let list=GUESTS.filter(g=>type==='in'?checkedIn[g.id]:!checkedIn[g.id]);
-  if(q.trim()){const ql=q.toLowerCase();list=list.filter(g=>g.name.toLowerCase().includes(ql)||(g.spouse&&g.spouse.toLowerCase().includes(ql))||String(g.table).includes(ql));}
-  if(!list.length){el.innerHTML=`<div style="padding:28px;text-align:center;color:#8aa89e;font-size:13px">${type==='in'?'No guests checked in yet.':'All guests have checked in! 🎉'}</div>`;return;}
-  el.innerHTML=tab==='table'?groupByTable(list,true):list.map(g=>gRow(g,true)).join('');
+  let list=PEOPLE.filter(p=>type==='in'?checkedIn[p.id]:!checkedIn[p.id]);
+  if(q.trim()){const ql=q.toLowerCase();list=list.filter(p=>p.name.toLowerCase().includes(ql)||String(p.table).includes(ql)||tName(p.table).toLowerCase().includes(ql));}
+  if(!list.length){el.innerHTML=`<div style="padding:28px;text-align:center;color:#8aa89e;font-size:13px">${type==='in'?'No one checked in yet.':'Everyone has checked in! 🎉'}</div>`;return;}
+  el.innerHTML=tab==='table'?groupByTable(list):list.map(p=>agRow(p)).join('');
 }
-
+ 
 function renderTableBreakdown(){
-  const tables=[...new Set(GUESTS.map(g=>g.table))].sort((a,b)=>a-b);
+  const tables=[...new Set(PEOPLE.map(p=>p.table))].sort((a,b)=>a-b);
   document.getElementById('tableBreakdown').innerHTML=tables.map(t=>{
-    const tg=GUESTS.filter(g=>g.table===t);
-    const chk=tg.filter(g=>checkedIn[g.id]).length;
-    const total=tg.length;const pct=total>0?Math.round((chk/total)*100):0;const c=col(t);
-    const names=tg.map(g=>g.name.split(' ')[0]).join(', ');
+    const tp=PEOPLE.filter(p=>p.table===t);
+    const chk=tp.filter(p=>checkedIn[p.id]).length;
+    const total=tp.length;const pct=total>0?Math.round((chk/total)*100):0;const c=col(t);
+    const names=[...new Set(tp.map(p=>p.name.split(' ')[0]))].join(', ');
     return `<div class="trow">
       <div class="trow-top">
         <div class="trow-name"><div class="tdot" style="background:${c}"></div>Table ${t} · ${tName(t)}</div>
-        <div class="trow-count" style="color:${chk===total?'#2e7d52':'#e65100'}">${chk}/${total}</div>
+        <div class="trow-count" style="color:${chk===total?'#2e7d52':'#e65100'}">${chk}/${total} people</div>
       </div>
-      <div class="trow-guests">${names.substring(0,70)}${names.length>70?'…':''}</div>
+      <div style="font-size:10px;color:#8aa89e;margin-bottom:5px">${names.substring(0,70)}${names.length>70?'…':''}</div>
       <div class="trow-bar"><div class="trow-fill" style="width:${pct}%;background:${c}"></div></div>
     </div>`;
   }).join('');
 }
-
-function fAdmin(type,q){
-  if(type==='in')inQ=q;else outQ=q;
-  renderAdminList(type,type==='in'?inQ:outQ,type==='in'?inTab:outTab);
-}
-
+ 
+function fAdmin(type,q){if(type==='in')inQ=q;else outQ=q;renderAdminList(type,type==='in'?inQ:outQ,type==='in'?inTab:outTab);}
 function aTab(type,tab,el){
   if(type==='in')inTab=tab;else outTab=tab;
   el.closest('.sc-tabs').querySelectorAll('.sc-tab').forEach(t=>t.classList.remove('active'));
   el.classList.add('active');
   renderAdminList(type,type==='in'?inQ:outQ,tab);
 }
-
+ 
 function adminToggle(id){
-  const wasIn=checkedIn[id];
-  checkedIn[id]=!wasIn;save();
+  const wasIn=checkedIn[id];checkedIn[id]=!wasIn;save();
   refreshAdmin();
-  const g=GUESTS.find(x=>x.id===id);
-  toast(wasIn?`↩ ${g.name.split(' ')[0]} removed`:`✓ ${g.name.split(' ')[0]} checked in!`,wasIn?'undo':'ok');
+  const p=PEOPLE.find(x=>x.id===id);
+  toast(wasIn?`↩ ${p.name.split(' ')[0]} removed`:`✓ ${p.name.split(' ')[0]} checked in!`,wasIn?'undo':'ok');
 }
-
-function refreshAdmin(){
-  load();updateStats();
-  renderAdminList('in',inQ,inTab);
-  renderAdminList('out',outQ,outTab);
-  renderTableBreakdown();
+ 
+function removePerson(id){
+  const p=PEOPLE.find(x=>x.id===id);
+  if(!confirm(`Remove ${p.name} from the guest list?`))return;
+  PEOPLE=PEOPLE.filter(x=>x.id!==id);
+  delete checkedIn[id];save();refreshAdmin();
+  toast(`${p.name} removed`,'undo');
 }
-
-// ═══════════════════════════════════════
-//  ADD / REMOVE GUESTS
-// ═══════════════════════════════════════
+ 
+function refreshAdmin(){load();updateStats();renderAdminList('in',inQ,inTab);renderAdminList('out',outQ,outTab);renderTableBreakdown();}
+ 
+// ══════════════════════════════════════
+//  ADD GUEST
+// ══════════════════════════════════════
 function buildTableSelect(){
-  const sel=document.getElementById('agTable');
+  const sel=document.getElementById('afTable');
   sel.innerHTML='<option value="">Select Table *</option>';
-  Object.entries(TABLE_NAMES).forEach(([num,name])=>{
-    sel.innerHTML+=`<option value="${num}">Table ${num} · ${name}</option>`;
-  });
+  Object.entries(TABLE_NAMES).forEach(([num,name])=>{sel.innerHTML+=`<option value="${num}">Table ${num} · ${name}</option>`;});
 }
-
 function addGuest(){
-  const name=document.getElementById('agName').value.trim();
-  const spouse=document.getElementById('agSpouse').value.trim();
-  const tableVal=document.getElementById('agTable').value;
-  if(!name){toast('Please enter a guest name','err');return;}
+  const name=document.getElementById('afName').value.trim();
+  const tableVal=document.getElementById('afTable').value;
+  const role=document.getElementById('afRole').value;
+  if(!name){toast('Please enter a name','err');return;}
   if(!tableVal){toast('Please select a table','err');return;}
-  const newGuest={id:nextId++,name,spouse,table:parseInt(tableVal)};
-  GUESTS.push(newGuest);
-  save();refreshAdmin();
-  document.getElementById('agName').value='';
-  document.getElementById('agSpouse').value='';
-  document.getElementById('agTable').value='';
+  const newPerson={id:nextId++,name,role,table:parseInt(tableVal),groupId:nextId++,type:'single'};
+  PEOPLE.push(newPerson);save();refreshAdmin();
+  document.getElementById('afName').value='';document.getElementById('afTable').value='';
   toast(`✓ ${name} added to Table ${tableVal}`,'ok');
 }
-
-function removeGuest(id){
-  const g=GUESTS.find(x=>x.id===id);
-  if(!confirm(`Remove ${g.name} from the guest list? This cannot be undone.`))return;
-  GUESTS=GUESTS.filter(x=>x.id!==id);
-  delete checkedIn[id];
-  save();refreshAdmin();
-  toast(`${g.name} removed`,'undo');
-}
-
-// ═══════════════════════════════════════
+ 
+// ══════════════════════════════════════
 //  EXPORT
-// ═══════════════════════════════════════
+// ══════════════════════════════════════
 function exportCSV(){
-  const rows=[['Name','Spouse','Table Number','Table Name','Status']];
-  GUESTS.forEach(g=>{
-    const sp=validSp(g.spouse)?g.spouse:'';
-    rows.push([g.name,sp,g.table,tName(g.table),checkedIn[g.id]?'Checked In':'Not Arrived']);
-  });
+  const rows=[['Name','Role','Table Number','Table Name','Status']];
+  PEOPLE.forEach(p=>{rows.push([p.name,p.role,p.table,tName(p.table),checkedIn[p.id]?'Checked In':'Not Arrived']);});
   const csv=rows.map(r=>r.map(c=>`"${c}"`).join(',')).join('\n');
   const a=Object.assign(document.createElement('a'),{href:URL.createObjectURL(new Blob([csv],{type:'text/csv'})),download:'covenant_love_checkins.csv'});
   a.click();toast('✓ CSV exported','ok');
 }
-
-function resetAll(){
-  if(!confirm('Reset ALL check-ins? This cannot be undone.'))return;
-  localStorage.removeItem('cle_ci');
-  checkedIn={};save();refreshAdmin();
-  toast('All check-ins reset','undo');
-}
-
-// ═══════════════════════════════════════
-//  TOAST
-// ═══════════════════════════════════════
+ 
+// TOAST
 function toast(msg,type='ok'){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.className=`toast ${type} show`;
+  const t=document.getElementById('toast');t.textContent=msg;t.className=`toast ${type} show`;
   setTimeout(()=>t.classList.remove('show'),3000);
 }
-
-// ═══════════════════════════════════════
-//  INIT
-// ═══════════════════════════════════════
+ 
+// INIT
 load();
 setInterval(()=>{load();if(document.getElementById('page-admin').classList.contains('active'))refreshAdmin();},30000);
 </script>
