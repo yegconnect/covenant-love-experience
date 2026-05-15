@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Covenant Love Experience — Check-In</title>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -408,7 +410,7 @@ body{font-family:'Inter',sans-serif;background:var(--surface);color:var(--text);
 // ══════════════════════════════════════
 //  CONFIG
 // ══════════════════════════════════════
-const ADMIN_PASSWORD = '2026';
+const ADMIN_PASSWORD = 'cccg2026';
  
 const TABLE_NAMES = {
   1:'Unconditional',2:'Devoted',3:'Passionate',4:'Tender',5:'Affectionate',
@@ -614,12 +616,71 @@ let nextId=2000;
 const col=t=>COLORS[(t-1)%COLORS.length];
 const ini=n=>n.trim().split(' ').slice(0,2).map(x=>x[0]||'').join('').toUpperCase();
 const tName=t=>TABLE_NAMES[t]||`Table ${t}`;
-function save(){localStorage.setItem('cle_ci2',JSON.stringify(checkedIn));localStorage.setItem('cle_people',JSON.stringify(PEOPLE));}
+ 
+// ── Firebase references ──
+let dbCheckins=null;
+let dbPeople=null;
+ 
+function save(){
+  if(dbCheckins) dbCheckins.set(checkedIn).catch(e=>console.error('Checkin save error:',e));
+  if(dbPeople) dbPeople.set(PEOPLE).catch(e=>console.error('People save error:',e));
+}
+ 
 function load(){
-  checkedIn=JSON.parse(localStorage.getItem('cle_ci2')||'{}');
-  const s=localStorage.getItem('cle_people');
-  if(s) PEOPLE=JSON.parse(s);
+  // Real-time listeners handle loading — this is a no-op now
   nextId=Math.max(...PEOPLE.map(p=>p.id),1999)+1;
+}
+ 
+function initFirebase(){
+  const firebaseConfig={
+    apiKey:"AIzaSyD_oWhSJ0QeIdRDfcePYLZ5p6HJICBgDUk",
+    authDomain:"covenant-love-checkin.firebaseapp.com",
+    databaseURL:"https://covenant-love-checkin-default-rtdb.firebaseio.com",
+    projectId:"covenant-love-checkin",
+    storageBucket:"covenant-love-checkin.firebasestorage.app",
+    messagingSenderId:"821221875743",
+    appId:"1:821221875743:web:c7cf3d4d2793c7d536b52a"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db=firebase.database();
+ 
+  dbCheckins=db.ref('checkins');
+  dbPeople=db.ref('people');
+ 
+  // ── Real-time listener for check-ins ──
+  dbCheckins.on('value', snapshot=>{
+    const data=snapshot.val();
+    checkedIn=data||{};
+    // Re-render whatever is currently visible
+    const searchVal=document.getElementById('guestSearch').value;
+    if(searchVal) onSearch(searchVal);
+    if(document.getElementById('page-admin').classList.contains('active')){
+      updateStats();
+      renderAdminList('in',inQ,inTab);
+      renderAdminList('out',outQ,outTab);
+      renderTableBreakdown();
+    }
+  });
+ 
+  // ── Real-time listener for guest list ──
+  dbPeople.on('value', snapshot=>{
+    const data=snapshot.val();
+    if(data && Array.isArray(data)){
+      PEOPLE=data;
+      nextId=Math.max(...PEOPLE.map(p=>p.id),1999)+1;
+    } else {
+      // First time — push default PEOPLE to Firebase
+      dbPeople.set(PEOPLE);
+    }
+    const searchVal=document.getElementById('guestSearch').value;
+    if(searchVal) onSearch(searchVal);
+    if(document.getElementById('page-admin').classList.contains('active')){
+      updateStats();
+      renderAdminList('in',inQ,inTab);
+      renderAdminList('out',outQ,outTab);
+      renderTableBreakdown();
+    }
+  });
 }
  
 // ══════════════════════════════════════
@@ -651,15 +712,12 @@ function onSearch(val){
   document.getElementById('sClear').classList.toggle('show',val.length>0);
   if(!val.trim()){showPrompt();return;}
   const ql=val.toLowerCase();
-  // Find matching people
   const matchPeople=PEOPLE.filter(p=>p.name.toLowerCase().includes(ql));
   if(!matchPeople.length){
     document.getElementById('guestContent').innerHTML=`<div class="empty"><div class="ei">🔍</div><p>No one found for "<strong>${val}</strong>".<br>Try a different spelling or ask an usher.</p></div>`;
     return;
   }
-  // Get unique groupIds from matches
   const matchGroupIds=[...new Set(matchPeople.map(p=>p.groupId))];
-  // Render group cards
   const area=document.getElementById('guestContent');
   area.innerHTML=`<div class="results-hdr"><div class="results-ct"><strong>${matchPeople.length}</strong> person${matchPeople.length!==1?'s':''} found</div></div>`+
     matchGroupIds.map(gid=>{
@@ -673,12 +731,10 @@ function buildGroupCard(members){
   const c=col(p0.table);
   const isCouple=members.some(m=>m.type==='couple-primary')||members.some(m=>m.type==='couple-spouse');
   const isSolo=members[0].type==='solo';
-  let typeLabel='';
-  let typeClass='';
+  let typeLabel='';let typeClass='';
   if(members.length===2&&isCouple){typeLabel='Couple';typeClass='type-couple';}
   else if(isSolo){typeLabel='Guest (Spouse not attending)';typeClass='type-solo';}
   else{typeLabel='Individual Guest';typeClass='type-single';}
- 
   return `<div class="group-card">
     <div class="group-card-header">
       <div class="group-table-pill">
@@ -731,10 +787,10 @@ function openModal(id){
 function confirmCheckin(){
   if(!selectedId)return;
   const wasIn=checkedIn[selectedId];
-  checkedIn[selectedId]=!wasIn;save();
+  checkedIn[selectedId]=!wasIn;
+  save(); // saves to Firebase
   const p=PEOPLE.find(x=>x.id===selectedId);
   closeModal();
-  onSearch(document.getElementById('guestSearch').value);
   toast(wasIn?`↩ ${p.name.split(' ')[0]} removed`:`✓ ${p.name.split(' ')[0]} checked in!`,wasIn?'undo':'ok');
 }
 function closeModal(){document.getElementById('overlay').classList.remove('open');selectedId=null;}
@@ -822,8 +878,8 @@ function aTab(type,tab,el){
 }
  
 function adminToggle(id){
-  const wasIn=checkedIn[id];checkedIn[id]=!wasIn;save();
-  refreshAdmin();
+  const wasIn=checkedIn[id];checkedIn[id]=!wasIn;
+  save(); // saves to Firebase
   const p=PEOPLE.find(x=>x.id===id);
   toast(wasIn?`↩ ${p.name.split(' ')[0]} removed`:`✓ ${p.name.split(' ')[0]} checked in!`,wasIn?'undo':'ok');
 }
@@ -832,11 +888,12 @@ function removePerson(id){
   const p=PEOPLE.find(x=>x.id===id);
   if(!confirm(`Remove ${p.name} from the guest list?`))return;
   PEOPLE=PEOPLE.filter(x=>x.id!==id);
-  delete checkedIn[id];save();refreshAdmin();
+  delete checkedIn[id];
+  save(); // saves to Firebase
   toast(`${p.name} removed`,'undo');
 }
  
-function refreshAdmin(){load();updateStats();renderAdminList('in',inQ,inTab);renderAdminList('out',outQ,outTab);renderTableBreakdown();}
+function refreshAdmin(){updateStats();renderAdminList('in',inQ,inTab);renderAdminList('out',outQ,outTab);renderTableBreakdown();}
  
 // ══════════════════════════════════════
 //  ADD GUEST
@@ -853,7 +910,8 @@ function addGuest(){
   if(!name){toast('Please enter a name','err');return;}
   if(!tableVal){toast('Please select a table','err');return;}
   const newPerson={id:nextId++,name,role,table:parseInt(tableVal),groupId:nextId++,type:'single'};
-  PEOPLE.push(newPerson);save();refreshAdmin();
+  PEOPLE.push(newPerson);
+  save(); // saves to Firebase
   document.getElementById('afName').value='';document.getElementById('afTable').value='';
   toast(`✓ ${name} added to Table ${tableVal}`,'ok');
 }
@@ -875,9 +933,10 @@ function toast(msg,type='ok'){
   setTimeout(()=>t.classList.remove('show'),3000);
 }
  
-// INIT
-load();
-setInterval(()=>{load();if(document.getElementById('page-admin').classList.contains('active'))refreshAdmin();},30000);
+// ══════════════════════════════════════
+//  INIT — wait for page to fully load
+// ══════════════════════════════════════
+window.addEventListener('DOMContentLoaded', initFirebase);
 </script>
 </body>
 </html>
